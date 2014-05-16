@@ -1,0 +1,12 @@
+# This file provides instructions for packaging.
+
+@prefix : <http://ontologi.es/doap-deps#>.
+
+`MooseX-Enumeration`
+	:runtime-requirement    [ :on "perl 5.008001"^^:CpanId ];
+	:runtime-requirement    [ :on "Type::Tiny::Enum"^^:CpanId ];
+	:runtime-requirement    [ :on "Moose 1.15"^^:CpanId ];
+	:test-requirement       [ :on "Test::More 0.92"^^:CpanId ];
+	:develop-recommendation [ :on "Dist::Inkt 0.001"^^:CpanId ];
+	.
+
