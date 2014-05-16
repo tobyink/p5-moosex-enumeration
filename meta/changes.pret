@@ -4,3 +4,10 @@
 	issued  2014-05-16;
 	label   "Initial release".
 
+`MooseX-Enumeration 0.002 cpan:TOBYINK`
+	issued  2014-05-16;
+	changeset [
+		item "Declare test dependency on Types::Standard."^^Packaging;
+		item "Add a test case for non-Type::Tiny type constraint."^^Tests;
+	].
+
