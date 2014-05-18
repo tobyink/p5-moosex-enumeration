@@ -15,4 +15,5 @@
 	issued  2014-05-18;
 	changeset [
 		item "Improved efficiency of delegated methods; they now run at twice the speed!"^^Change;
+		item "No longer require Type::Tiny::Enum; fall back to Moose::Meta::TypeConstraint::Enum."^^Change;
 	].

@@ -20,9 +20,10 @@ before _process_isa_option => sub
 	{
 		confess "Cannot supply both the 'isa' and 'enum' options"
 			if $options->{isa};
-		
-		require Type::Tiny::Enum;
-		$options->{isa} = 'Type::Tiny::Enum'->new(values => $options->{enum});
+		require MooseX::Enumeration;
+		$options->{isa} = 'MooseX::Enumeration'
+			-> _enum_type_implementation
+			-> new( values => $options->{enum} );
 	}
 };
 

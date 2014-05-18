@@ -4,10 +4,9 @@
 
 `MooseX-Enumeration`
 	:runtime-requirement    [ :on "perl 5.008001"^^:CpanId ];
-	:runtime-requirement    [ :on "Type::Tiny::Enum 0.030"^^:CpanId ];
+	:runtime-recommendation [ :on "Type::Tiny::Enum 0.030"^^:CpanId ];
 	:runtime-requirement    [ :on "Moose 1.15"^^:CpanId ];
 	:test-requirement       [ :on "Test::More 0.92"^^:CpanId ];
-	:test-requirement       [ :on "Types::Standard 0.008"^^:CpanId ];
 	:develop-recommendation [ :on "Dist::Inkt 0.001"^^:CpanId ];
 	.
 

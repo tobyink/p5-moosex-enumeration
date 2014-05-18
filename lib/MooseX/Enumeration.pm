@@ -7,6 +7,19 @@ package MooseX::Enumeration;
 our $AUTHORITY = 'cpan:TOBYINK';
 our $VERSION   = '0.003';
 
+{
+	my $impl;
+	sub _enum_type_implementation
+	{
+		$impl ||= eval { require Type::Tiny::Enum }
+			? 'Type::Tiny::Enum'
+			: do {
+				require Moose::Meta::TypeConstraint::Enum;
+				'Moose::Meta::TypeConstraint::Enum';
+			};
+	}
+}
+
 1;
 
 __END__
