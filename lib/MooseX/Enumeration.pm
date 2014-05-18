@@ -141,6 +141,13 @@ We can still go one better...
 
 This will create a delegated method for each value in the enumeration.
 
+=head1 PERFORMANCE
+
+As of version 0.003, C<< $obj->is_pass >> actually benchmarks I<faster>
+than C<< $obj->status eq "pass" >>. The latter comparison can be
+accelerated using L<MooseX::XSAccessor> but this module can not (yet)
+provide an XS version for C<is_pass>. :-(
+
 =head1 BUGS
 
 Please report any bugs to
