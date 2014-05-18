@@ -11,3 +11,8 @@
 		item "Add a test case for non-Type::Tiny type constraint."^^Tests;
 	].
 
+`MooseX-Enumeration 0.003 cpan:TOBYINK`
+	issued  2014-05-18;
+	changeset [
+		item "Improved efficiency of delegated methods; they now run at twice the speed!"^^Change;
+	].
