@@ -18,3 +18,9 @@
 		item "No longer require Type::Tiny::Enum; fall back to Moose::Meta::TypeConstraint::Enum."^^Change;
 		item "Declare dependency on Module::Runtime."^^Packaging;
 	].
+
+`MooseX-Enumeration 0.004 cpan:TOBYINK`
+	issued  2014-05-19;
+	changeset [
+		item "Avoid role conflict on Moose older than 2.0800."^^Bugfix;
+	].
