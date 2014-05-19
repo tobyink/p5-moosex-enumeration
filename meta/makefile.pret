@@ -9,6 +9,7 @@
 	:runtime-requirement    [ :on "Module::Runtime"^^:CpanId ];
 	:test-requirement       [ :on "Test::More 0.92"^^:CpanId ];
 	:test-requirement       [ :on "Test::Fatal"^^:CpanId ];
+	:test-requirement       [ :on "Test::Requires 0.006"^^:CpanId ];
 	:develop-recommendation [ :on "Dist::Inkt 0.001"^^:CpanId ];
 	.
 
