@@ -28,6 +28,12 @@ around _generate_method => sub
 	
 	my @curried = @{ $self->curried_arguments };
 	
+	if ( @curried==1 )
+	{
+		my $type = $self->associated_attribute->type_constraint;
+		$type->assert_valid($curried[0]);
+	}
+	
 	# If everything is as expected...
 	if ( @curried==1
 	and defined $curried[0]
@@ -50,5 +56,7 @@ around _generate_method => sub
 	# from Moose::Meta::Method::Accessor::Native::Reader.
 	$self->$next(@_);
 };
+
+
 
 1;
