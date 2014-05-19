@@ -73,6 +73,8 @@ around _canonicalize_handles => sub
 	my %handles = $self->$next(@_);
 	for my $h (values %handles)
 	{
+		next unless $h->[0] =~ /^(is)_(\w+)$/;
+		
 		my @s = split /_/, shift(@$h), 2;
 		unshift @$h, @s;
 	}

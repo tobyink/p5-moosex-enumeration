@@ -7,6 +7,8 @@
 	:runtime-recommendation [ :on "Type::Tiny::Enum 0.030"^^:CpanId ];
 	:runtime-requirement    [ :on "Moose 1.15"^^:CpanId ];
 	:runtime-requirement    [ :on "Module::Runtime"^^:CpanId ];
+	:runtime-requirement    [ :on "match::simple"^^:CpanId ];
+	:runtime-recommendation [ :on "match::simple::XS"^^:CpanId ];
 	:test-requirement       [ :on "Test::More 0.92"^^:CpanId ];
 	:test-requirement       [ :on "Test::Fatal"^^:CpanId ];
 	:test-requirement       [ :on "Test::Requires 0.006"^^:CpanId ];

@@ -14,11 +14,13 @@ around _maximum_arguments => sub { 1 };
 
 sub _return_value
 {
+	require match::simple;
+	
 	my $self = shift;
 	my ($slot_access) = @_;
 	# Note that $_[0] comes from @curried which has been closed over
 	# and contains the string we need to compare against.
-	return $slot_access . ' eq $_[0]';
+	return "match::simple::match($slot_access, \$_[0])";
 }
 
 around _generate_method => sub
@@ -28,12 +30,6 @@ around _generate_method => sub
 	
 	my @curried = @{ $self->curried_arguments };
 	
-	if ( @curried==1 )
-	{
-		my $type = $self->associated_attribute->type_constraint;
-		$type->assert_valid($curried[0]);
-	}
-	
 	# If everything is as expected...
 	if ( @curried==1
 	and defined $curried[0]
@@ -41,6 +37,9 @@ around _generate_method => sub
 	and $self->_maximum_arguments==1
 	and $self->_minimum_arguments==1 )
 	{
+		my $type = $self->associated_attribute->type_constraint;
+		$type->assert_valid($curried[0]);
+		
 		# ... then provide a highly optimized accessor.
 		require B;
 		require Moose::Util;
@@ -56,7 +55,5 @@ around _generate_method => sub
 	# from Moose::Meta::Method::Accessor::Native::Reader.
 	$self->$next(@_);
 };
-
-
 
 1;

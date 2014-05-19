@@ -97,6 +97,10 @@ This trait gives you a shortcut for specifying an enum type constraint:
 
 =head2 Delegation
 
+=over
+
+=item C<< is >>
+
 The trait also allows you to delegate "is" to the attribute value.
 
    # the most longhanded form...
@@ -114,6 +118,16 @@ The trait also allows you to delegate "is" to the attribute value.
 Note that above, we might have called the delegated method
 C<< "did_pass" >> instead of C<< "is_pass" >>. You can call it what you
 like.
+
+   has status => (
+      traits    => ["Enumeration"],
+      is        => "rw",
+      enum      => [qw/ pass fail /],
+      handles   => {
+         did_pass    => ["is", "pass"],
+         didnt_pass  => ["is", "fail"],
+      }
+   );
 
 To save typing, we offer some shorthands for common patterns.
 
@@ -153,6 +167,24 @@ We can still go one better...
    );
 
 This will create a delegated method for each value in the enumeration.
+
+As a slightly more advanced option, which will only work for the
+long-hand version, you may match the value against a regular expression
+or any other value that may serve as a right-hand side for a
+L<match::simple> match operation:
+
+   has status => (
+      traits    => ["Enumeration"],
+      is        => "rw",
+      enum      => [qw/ pass fail skip todo /],
+      handles   => {
+         is_pass  => [ "is", qr{^pass$} ],
+         is_fail  => [ "is", "fail" ],
+         is_other => [ "is", [qw(skip todo)] ],
+      }
+   );
+
+=back
 
 =head1 PERFORMANCE
 
