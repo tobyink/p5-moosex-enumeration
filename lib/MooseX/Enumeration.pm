@@ -184,6 +184,47 @@ L<match::simple> match operation:
       }
    );
 
+=item C<< assign >>
+
+The Enumeration trait allows you to delegate to "assign":
+
+   has status => (
+      traits    => ["Enumeration"],
+      is        => "ro",
+      enum      => [qw/ pass fail unknown /],
+      handles   => {
+         "set_status_pass"  => [ "assign", "pass" ],
+         "set_status_fail"  => [ "assign", "fail" ],
+         "clear_status"     => [ "assign", "unknown" ],
+      }
+   );
+   
+   ...;
+   $obj->set_status_pass;   # sets the object's status to "pass"
+
+It is possible to restrict allowed transitions by adding an extra
+parameter. In the following example you can only set the status to
+"pass" if the current status is "unknown", and you can only set the
+status to "fail" if the current status begins with "u" (effectively
+the same thing).
+
+   has status => (
+      traits    => ["Enumeration"],
+      is        => "ro",
+      enum      => [qw/ pass fail unknown /],
+      handles   => {
+         "set_status_pass"  => [ "assign", "pass", "unknown" ],
+         "set_status_fail"  => [ "assign", "fail", qr{^u} ],
+         "clear_status"     => [ "assign", "unknown" ],
+      }
+   );
+
+Calling C<set_status_pass> if the status is already "pass" is
+conceptually a no-op, so is always allowed.
+
+Methods delegated to C<assign> always return C<< $self >> so are
+suitable for chaining.
+
 =back
 
 =head1 PERFORMANCE

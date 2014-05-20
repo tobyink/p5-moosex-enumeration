@@ -1,2 +1,0 @@
-- offer to_pass/to_fail mutators which can take optional arguments dictating allowed transitions
-- create an exception class for disallowed transitions
