@@ -24,3 +24,14 @@
 	changeset [
 		item "Avoid role conflict on Moose older than 2.0800."^^Bugfix;
 	].
+
+`MooseX-Enumeration 0.005 cpan:TOBYINK`
+	issued  2014-09-12;
+	changeset [
+		item [
+			a dcs:Bugfix;
+			label "Support lazy attributes.";
+			dcs:fixes RT#96312;
+			dcs:thanks cpan:JMAC;
+		];
+	].

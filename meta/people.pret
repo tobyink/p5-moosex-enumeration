@@ -7,3 +7,7 @@ cpan:TOBYINK
 	:page  <https://metacpan.org/author/TOBYINK>;
 	:mbox  <mailto:tobyink@cpan.org>.
 
+cpan:JMAC
+	:name  "Jason McIntosh";
+	:page  <http://jmac.org>;
+	:mbox  <mailto:jmac@jmac.org>.

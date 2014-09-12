@@ -5,7 +5,7 @@ use warnings;
 package MooseX::Enumeration;
 
 our $AUTHORITY = 'cpan:TOBYINK';
-our $VERSION   = '0.004';
+our $VERSION   = '0.005';
 
 {
 	my $impl;
