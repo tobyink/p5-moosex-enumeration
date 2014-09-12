@@ -34,6 +34,7 @@ around _generate_method => sub
 	if ( @curried==1
 	and defined $curried[0]
 	and not ref $curried[0]
+	and not $self->associated_attribute->is_lazy
 	and $self->_maximum_arguments==1
 	and $self->_minimum_arguments==1 )
 	{
@@ -44,7 +45,7 @@ around _generate_method => sub
 		require B;
 		require Moose::Util;
 		return sprintf(
-			'sub { %s if @_ > 1; %s eq %s }',
+			'sub { %s if @_ > 1; no warnings qw(uninitialized); %s eq %s }',
 			"Moose::Util::throw_exception('MethodExpectsFewerArgs', 'method_name', 'is', 'maximum_args', 1)",
 			$self->_get_value('$_[0]'),
 			B::perlstring($curried[0]),

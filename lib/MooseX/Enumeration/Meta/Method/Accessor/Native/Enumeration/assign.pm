@@ -84,6 +84,7 @@ around _generate_method => sub
 	# Optimized accessor for one curried argument
 	if ( @curried==1
 	and !$coerce
+	and not $self->associated_attribute->is_lazy
 	and $self->_maximum_arguments==2
 	and $self->_minimum_arguments==1 )
 	{
@@ -106,6 +107,7 @@ around _generate_method => sub
 	# Optimized accessor for two curried arguments
 	if ( @curried==2
 	and !$coerce
+	and not $self->associated_attribute->is_lazy
 	and $self->_maximum_arguments==2
 	and $self->_minimum_arguments==1 )
 	{
