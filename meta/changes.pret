@@ -35,3 +35,12 @@
 			dcs:thanks cpan:JMAC;
 		];
 	].
+
+`MooseX-Enumeration 0.006 cpan:TOBYINK`
+	issued  2018-05-10;
+	changeset [
+		item [
+			a dcs:Bugfix;
+			label "Be less fussy about the exact text of a particular exception thrown in a particular test.";
+		];
+	].
