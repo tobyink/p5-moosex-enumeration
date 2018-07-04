@@ -57,3 +57,16 @@
 			label "Delegated assign now works for lazy attributes.";
 		];
 	].
+
+`MooseX-Enumeration 0.008 cpan:TOBYINK`
+	issued  2018-07-04;
+	changeset [
+		item [
+			a dcs:Tests;
+			label "Adopt already-passing tests for attribute triggers from MooX::Enumeration.";
+		];
+		item [
+			a dcs:Tests;
+			label "Adopt already-passing test for potential precedence bug in lazy attributes from MooX::Enumeration.";
+		];
+	].
