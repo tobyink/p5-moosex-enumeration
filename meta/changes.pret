@@ -44,3 +44,12 @@
 			label "Be less fussy about the exact text of a particular exception thrown in a particular test.";
 		];
 	].
+
+`MooseX-Enumeration 0.007 cpan:TOBYINK`
+	issued  2018-07-04;
+	changeset [
+		item [
+			a dcs:Documentation;
+			label "Mention MooX::Enumeration.";
+		];
+	].

@@ -4,7 +4,7 @@ use warnings;
 
 package MooseX::Enumeration::Meta::Method::Accessor::Native::Enumeration::assign;
 our $AUTHORITY = 'cpan:TOBYINK';
-our $VERSION   = '0.006';
+our $VERSION   = '0.007';
 
 use Moose::Role;
 with 'Moose::Meta::Method::Accessor::Native::Writer';
@@ -74,7 +74,7 @@ around _generate_method => sub
 {
 	my $next = shift;
 	my $self = shift;
-	$self->$next(@_);
+###	$self->$next(@_);  # can't remember why we do this???
 	
 	my $inv = '$self';
 	my @curried = @{ $self->curried_arguments };
@@ -130,7 +130,7 @@ around _generate_method => sub
 				$self->_inline_set_new_value($inv, B::perlstring($curried[0]), $slot_access),
 				$self->_inline_return_value($slot_access, 'for writer'),
 			);
-		}
+		} 
 		
 		else
 		{
