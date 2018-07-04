@@ -146,7 +146,7 @@ around _generate_method => sub
 				$self->_inline_set_new_value($inv, B::perlstring($curried[0]), $slot_access),
 				$self->_inline_return_value($slot_access, 'for writer'),
 			);
-		} 
+		}
 		
 		else
 		{
