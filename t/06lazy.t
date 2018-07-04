@@ -12,7 +12,7 @@ Toby Inkster E<lt>tobyink@cpan.orgE<gt>.
 
 =head1 COPYRIGHT AND LICENCE
 
-This software is copyright (c) 2014 by Toby Inkster.
+This software is copyright (c) 2018 by Toby Inkster.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
@@ -22,7 +22,7 @@ the same terms as the Perl 5 programming language system itself.
 use 5.008001;
 use strict;
 use warnings;
-use Test::More tests => 4;
+use Test::More tests => 5;
 
 {
 	package Local::Test;
@@ -55,3 +55,19 @@ ok(!Local::Test->new->is_baz, "lazy defaults work with is, 3");
 #);
 
 ok(Local::Test->new->assign_bar_if_foo->is_bar, "lazy defaults work with assign");
+
+
+{
+	package Local::Test2;
+	use Moose;
+	has xyz => (
+		traits  => ["Enum"],
+		is      => "rw",
+		enum    => [qw/foo bar/],
+		default => "bar",
+		lazy    => 1,
+		handles => { qw(is_foo is_foo), assign_bar=>[assign=>qw(bar), qr{f}] },
+	);
+}
+
+ok(!Local::Test2->new(xyz=>"bar")->is_foo, "precedence issue");

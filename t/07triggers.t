@@ -52,10 +52,10 @@ ok( Local::Test->new->is_foo, "lazy defaults work with is, 1");
 ok(!Local::Test->new->is_bar, "lazy defaults work with is, 2");
 ok(!Local::Test->new->is_baz, "lazy defaults work with is, 3");
 
-require B::Deparse;
-::diag(
-	B::Deparse->new->coderef2text( Local::Test->can('assign_bar_if_foo') )
-);
+#require B::Deparse;
+#::diag(
+#	B::Deparse->new->coderef2text( Local::Test->can('assign_bar_if_foo') )
+#);
 
 ok(Local::Test->new->assign_bar_if_foo->is_bar, "lazy defaults work with assign");
 
