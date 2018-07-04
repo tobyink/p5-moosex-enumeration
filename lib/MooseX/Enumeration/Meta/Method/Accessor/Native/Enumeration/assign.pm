@@ -46,6 +46,21 @@ around _inline_process_arguments => sub
 	$self->_inline_check_allowed_transition($slot_access, 1) . $orig;
 };
 
+sub _inline_force_build {
+	my $self = shift;
+	my ($inv, $slot_access) = @_;
+	
+	my $method = $self->associated_attribute->get_read_method;
+	
+	sprintf(
+		'if (!exists %s) { %s }',
+		$slot_access,
+		$method
+			? "${inv}->${method}"
+			: sprintf("%s = Moose::Util::find_meta(%s)->find_attribute_by_name(%s)->get_value(%s)", $slot_access, $inv, B::perlstring($self->associate_attribute->name, $inv))
+	);
+}
+
 sub _inline_check_allowed_transition
 {
 	require B;
@@ -55,7 +70,8 @@ sub _inline_check_allowed_transition
 	my ($slot_access, $allow) = @_;
 	
 	my $die = $self->_inline_allowed_transition_exception($slot_access);
-	return "\$#_ < $allow or match::simple::match($slot_access, \$_[$allow]) or $die;";
+	my $force_build = $self->_inline_force_build('$self', $slot_access);
+	return "$force_build; \$#_ < $allow or match::simple::match($slot_access, \$_[$allow]) or $die;";
 }
 
 sub _inline_allowed_transition_exception

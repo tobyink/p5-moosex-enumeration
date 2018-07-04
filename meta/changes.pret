@@ -52,4 +52,8 @@
 			a dcs:Documentation;
 			label "Mention MooX::Enumeration.";
 		];
+		item [
+			a dcs:Bugfix;
+			label "Delegated assign now works for lazy attributes.";
+		];
 	].
