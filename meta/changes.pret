@@ -70,3 +70,11 @@
 			label "Adopt already-passing test for potential precedence bug in lazy attributes from MooX::Enumeration.";
 		];
 	].
+
+`MooseX-Enumeration 0.009 cpan:TOBYINK`
+	issued  2019-11-24;
+	changeset [
+		item [
+			label "Support handles => 2.";
+		];
+	].
