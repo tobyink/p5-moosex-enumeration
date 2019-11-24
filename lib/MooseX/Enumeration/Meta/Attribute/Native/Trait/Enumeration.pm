@@ -64,6 +64,11 @@ around _canonicalize_handles => sub
 	{
 		return map +("is_$_" => ["is", $_]), @{ $self->enum };
 	}
+	elsif (!ref $handles and $handles eq 2)
+	{
+		my $attr = $self->name;
+		return map +("$attr\_is_$_" => ["is", $_]), @{ $self->enum };
+	}
 	
 	if (ref $handles eq 'ARRAY')
 	{
